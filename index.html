@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>QUICK EATS</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>EaT LA</h1>
+    <div id="map"></div>
+    <script>
+      // new map
+      var map;
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 34.1017, lng: -118.3337},
+          zoom: 10.5
+        });
+
+        // // adding marker to map
+        // var marker = new google.maps.Marker({
+        //   position:{lat: 34.087092,lng: -118.376665},
+        //   map:map,
+        //   icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+        // });
+
+        // var infoWindow = new google.maps.InfoWindow({
+        //   content:'<h1>Nobu La</h1>'
+        // });
+
+        // marker.addListener('click', function(){
+        //   infoWindow.open(map, marker);
+        // });
+
+        addMarker({
+          coords:{lat:34.087092,lng:-118.376665},
+          iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          content:'<h1>Nobu</h1>'
+        });
+        addMarker({
+          coords:{lat:34.064015,lng:-118.398720},
+          content:'<h4>Ruth Chris</h4>'
+        });
+        addMarker({
+          coords:{lat:34.047419,lng:-118.257244},
+          content:'<h4> Sugar Fish</h4>'
+          }); //suagr fish
+        addMarker({
+          coords:{lat:34.083899,lng:-118.344266},
+          content:'<h4> Pinks Hot Dog</h4>'
+        }); // pinks
+        addMarker({
+          coords:{lat:34.094536,lng:-118.338150},
+          content:'<h4> Fat Sals</h4>'
+        }); // fat sals
+        addMarker({
+          coords:{lat:34.072709,lng:-118.371743},
+          content:'<h4> Joans On Third</h4>'
+        }); // joans on third
+        addMarker({
+          coords:{lat:34.042104,lng:-118.235246},
+          content:'<h4> Earth Cafe</h4>'
+          }); //earth cafe
+        addMarker({
+          coords:{lat:34.083440,lng:-118.374325},
+          content:'<h4> Alfreds</h4>'
+        }); // alfreds
+        addMarker({
+          coords:{lat:34.044402,lng:-118.256024},
+          content:'<h4> Shake Shack</h4>'
+          }); // shake shack
+        addMarker({
+          coords:{lat:34.086962,lng:-118.376679},
+          content:'<h4> Barton G</h4>'
+        }); // barton g
+
+
+
+
+
+        // add marker function
+        function addMarker(props){
+                 var marker = new google.maps.Marker({
+                  position:props.coords,
+                   map:map,
+                   // icon:props.iconImage
+           });
+
+                 // check for custom icon
+            if(props.iconImage){
+              // set icon image
+              marker.setIcon(props.iconImage);
+            }
+            // check content
+            if(props.content){
+               var infoWindow = new google.maps.InfoWindow({
+          content:props.content
+        });
+
+        marker.addListener('click', function(){
+          infoWindow.open(map, marker);
+         });
+         }
+        }
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"
+    async defer>
+    </script>
+  </body>
+</html>
